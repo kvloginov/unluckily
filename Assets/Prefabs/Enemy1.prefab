@@ -75,9 +75,8 @@ GameObject:
   - component: {fileID: 5037619873960763013}
   - component: {fileID: 5037619873960763019}
   - component: {fileID: 5037619873960763018}
-  - component: {fileID: 1654195032}
   m_Layer: 9
-  m_Name: BodyRender
+  m_Name: Enemy BodyRender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,20 +147,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1654195032
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5037619873960763012}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5037619874319374940
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +158,6 @@ GameObject:
   - component: {fileID: 5037619874319374941}
   - component: {fileID: 5037619874319374944}
   - component: {fileID: 5037619874319374947}
-  - component: {fileID: 5037619874319374946}
   m_Layer: 9
   m_Name: LEYE (1)
   m_TagString: Untagged
@@ -246,20 +230,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5037619874319374946
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5037619874319374940}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5037619874554794864
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +241,6 @@ GameObject:
   - component: {fileID: 5037619874554794865}
   - component: {fileID: 5037619874554794868}
   - component: {fileID: 5037619874554794871}
-  - component: {fileID: 5037619874554794870}
   m_Layer: 9
   m_Name: LEYE
   m_TagString: Untagged
@@ -344,20 +313,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5037619874554794870
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5037619874554794864}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5037619874638700614
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,10 +322,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5037619874638700613}
-  - component: {fileID: 5037619874638700612}
-  - component: {fileID: 5037619874638700615}
+  - component: {fileID: 6775084669800406086}
   - component: {fileID: 3890428039977992546}
   - component: {fileID: 7690692059273269468}
+  - component: {fileID: 1858108783381723806}
   m_Layer: 9
   m_Name: Enemy1
   m_TagString: Enemy
@@ -396,8 +351,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &5037619874638700612
-CharacterController:
+--- !u!136 &6775084669800406086
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -405,40 +360,11 @@ CharacterController:
   m_GameObject: {fileID: 5037619874638700614}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
+  m_Enabled: 1
+  m_Radius: 0.66
   m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 60
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.003
-  m_MinMoveDistance: 0.001
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5037619874638700615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5037619874638700614}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50b25ae13abd83c4b90bc40e5182eecf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGround: 0
-  groundAngle: 0
-  ProjectMoveOnGround: 0
-  moveInput: {x: 0, y: 0, z: 0}
-  slopeLimit: 40
-  inertiaDampingTime: 0.1
-  slopeStartForce: 3
-  slopeAcceleration: 3
-  inertiaVelocity: {x: 0, y: 0, z: 0}
-  platformAction: 1
-  platformVelocity: {x: 0, y: 0, z: 0}
-  applyCollision: 1
-  pushForce: 55
 --- !u!54 &3890428039977992546
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -536,3 +462,15 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &1858108783381723806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5037619874638700614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53f9e81a53cae745bb2575541bb8c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
