@@ -14,7 +14,7 @@ public class PlayerInput : MonoBehaviour
 
     public Transform bodyRender;
 
-    public Animator handAnimator; // TODO: move to hand script?
+    public Animator animator; // TODO: move to hand script?
 
     public ObjectsUnderCollider objectsUnderHitColliderScript;
 
@@ -51,13 +51,14 @@ public class PlayerInput : MonoBehaviour
 
             if (Input.GetMouseButton(0))
             {
-                handAnimator.SetBool("Punch", true);
+                animator.SetBool("Punch", true);
             }
             else
             {
-                handAnimator.SetBool("Punch", false);
+                animator.SetBool("Punch", false);
             }
         }
+        animator.SetFloat("MoveSpeed", physicalCC.GetVelocity());
     }
 
     // called by animation
@@ -65,6 +66,10 @@ public class PlayerInput : MonoBehaviour
     {
         foreach (Collider other in objectsUnderHitColliderScript.Get())
         {
+            if (other.IsDestroyed())
+            {
+                continue;
+            }
             var ai = other.GetComponent(typeof(Ai)) as Ai;
             if (ai == null)
             {

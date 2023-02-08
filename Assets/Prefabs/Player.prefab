@@ -590,6 +590,7 @@ MonoBehaviour:
   groundAngle: 0
   ProjectMoveOnGround: 0
   moveInput: {x: 0, y: 0, z: 0}
+  moveVelocity: {x: 0, y: 0, z: 0}
   slopeLimit: 40
   inertiaDampingTime: 0.1
   slopeStartForce: 3
@@ -616,7 +617,7 @@ MonoBehaviour:
   jumpHeight: 15
   physicalCC: {fileID: 5037619874638700615}
   bodyRender: {fileID: 5037619873960763013}
-  handAnimator: {fileID: 3816638325747902038}
+  animator: {fileID: 3816638325747902038}
   objectsUnderHitColliderScript: {fileID: 899929949311191546}
   isSitting: 0
 --- !u!114 &3710763922107695250
