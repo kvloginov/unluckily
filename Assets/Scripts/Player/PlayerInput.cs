@@ -6,17 +6,24 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-
     public int attackPower = 30;
-    public float speed = 5;
+    public float speed = 10;
     public float jumpHeight = 15;
-    public PhysicalCC physicalCC;
+
+
+    public AudioSource hitAudioSource;
+    public AudioSource missAudioSource;
+
+
+    private PhysicalCC physicalCC;
 
     public Transform bodyRender;
 
-    public Animator animator; // TODO: move to hand script?
+    private Animator animator; 
 
     public ObjectsUnderCollider objectsUnderHitColliderScript;
+
+    public HealthStatus healthStatus;
 
 
     IEnumerator sitCort;
@@ -25,7 +32,9 @@ public class PlayerInput : MonoBehaviour
 
     private void Start()
     {
-
+        animator = GetComponent<Animator>();
+        physicalCC = GetComponent<PhysicalCC>();
+        healthStatus = GetComponent<HealthStatus>();
     }
 
     void Update()
@@ -49,36 +58,58 @@ public class PlayerInput : MonoBehaviour
                 StartCoroutine(sitCort);
             }
 
-            if (Input.GetMouseButton(0))
-            {
-                animator.SetBool("Punch", true);
-            }
-            else
-            {
-                animator.SetBool("Punch", false);
-            }
+           
         }
+
+        if (Input.GetMouseButton(0))
+        {
+            animator.SetBool("Punch", true);
+        }
+        else
+        {
+            animator.SetBool("Punch", false);
+        }
+
         animator.SetFloat("MoveSpeed", physicalCC.GetVelocity());
+
+        if (healthStatus.GetHealth() <= 0) { 
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+            return;
+        }
+
     }
 
     // called by animation
     public void doHit()
     {
+        bool touched = false;
         foreach (Collider other in objectsUnderHitColliderScript.Get())
         {
             if (other.IsDestroyed())
             {
                 continue;
             }
-            var ai = other.GetComponent(typeof(Ai)) as Ai;
-            if (ai == null)
+            var healthStatus = other.GetComponent(typeof(HealthStatus)) as HealthStatus;
+            if (healthStatus == null)
             {
                 continue;
             }
-            ai.Health -= attackPower;
-            Debug.Log("now " + other.name + "hp is " + ai.Health);
+            healthStatus.TakeDamage(attackPower);
+            touched = true;
+        }
+        if (touched)
+        {
+            Debug.Log("PLAY TOUCHED");
+            hitAudioSource.Play();
         }
     }
+
+    public void doPunchStart()
+    {
+        missAudioSource.Play();
+    }
+
 
     IEnumerator sitDown()
     {
